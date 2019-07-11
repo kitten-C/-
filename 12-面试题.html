@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 封装call apply bind
+    // myCall  1,2,3
+    // 改变this 指向
+    //   Function.prototype.myCall = function(win, ...arr) {
+    //     // this()
+    //     // console.log(this)
+    //     // 在传入的对象里面添加 一个当前的函数
+    //     win._this = this
+    //     // 调用当前函数
+    //     win._this(...arr)
+    //     // 删除当前创建的方法
+    //     delete win._this
+    //   }
+
+    // Function.prototype.myCall = function ( _this = window , val ) {
+
+    //     _this._this = this;
+    //     const result = _this._this(...val);
+    //     delete _this._this;
+    //     return result;
+    // }
+
+    // Function.prototype.myApply = function(_this = window , ...val){
+
+    //     _this._this = this;
+    //     const result = _this._this(...val);
+    //     delete _this._this;
+    //     return result
+    // }
+
+    // Function.prototype.myBind = function(_this = window , ...val){
+
+    //     _this._this = this;
+    //     return function(){
+    //         const result = _this._this(...val);
+    //         delete _this._this;
+    //         return result;
+    //     }
+    // }
+
+    // function fun(num, num1, num2) {
+    //     console.log(this, num, num1, num2);
+    // }
+    // var obj = { a: 123 };
+    // fun.myCall(obj, 1, 2, 3); // {} 1
+    // fun.call(obj, 1, 2, 3);
+
+    //   实现一个柯里化函数
+    //   function add(...num) {
+    //     var count = 0
+    //     var fun = function(...nums) {
+    //       nums.forEach(v => (count += v))
+    //       return fun
+    //     }
+    //     fun.toString = function() {
+    //       return count
+    //     }
+
+    //     return fun(...num)
+    //   }
+    //   console.log(add(12, 13)(34)(34, 45))
+
+    function add(...num) {
+      var count = 0
+      num.forEach(function (v) {
+        count += v
+      })
+      // console.log(count)
+      fun.toString = function () {
+        return count
+      }
+      function fun(...num1) {
+        num1.forEach(function (v) {
+          count += v
+        })
+        console.log(count)
+        return fun
+      }
+      return fun
+    }
+    add(12) // ===== 12
+    add(1, 2, 3) // === 6
+    add(1, 2)(3, 4) // === 10
+    add(1)(2)(3) // === 6
+    //   === 12
+    console.log(add(1)(2)(3)(1)(2)(3))
+    // var arr = [9, 6, 3]
+    // arr.forEach(function (v, i) {
+    //     console.log(v , i)
+    // })
+
+    //   var arr = [
+    //     { name: '祖宗', type: 1, posterity: null },
+    //     { name: '父亲', type: 3, posterity: null },
+    //     { name: '儿子', type: 4, posterity: null },
+    //     { name: '祖父', type: 2, posterity: null },
+    //     { name: '孙子', type: 5, posterity: null }
+    //   ]
+    //   // 输出一个对象 {name: "祖宗" ，type: 1, posterity: {name: "祖父", type: 2, posterity: name: "父亲", type: 3, posterity:。。。} }
+    //   var arr1 = []
+    //   for (var i = 0; i < arr.length; i++) {
+    //     arr1[arr[i].type - 1] = arr[i]
+    //   }
+    //   for (var i = 0; i < arr1.length - 1; i++) {
+    //     arr1[i].posterity = arr1[i + 1]
+    //   }
+    //   console.log(arr1[0])
+
+    // ...
+    // console.log(...[1,2,3] , [1,2,3])
+    // var arr = [1, 2, 3]
+    // console.log([...arr, 8, 9, 0])
+    // var obj = {a:1,b:2}
+    // console.log({
+    //     ...obj , c:3
+    // })
+
+    // function fun(...arr){
+    //     console.log(arr)
+    // }
+
+    // 链表
+    var arr = [{ name: '祖宗', type: 1, posterity: null }, { name: '父亲', type: 3, posterity: null }, { name: '儿子', type: 4, posterity: null }, { name: '祖父', type: 2, posterity: null }, { name: '孙子', type: 5, posterity: null }] // // 输出一个对象 {name: "祖宗" ，type: 1, posterity: {name: "祖父", type: 2, posterity:{ name: "父亲", type: 3, posterity:。。。} } function fn(arr) { arr.sort(function(a, b) { return a.type - b.type }) var result = arr.pop() arr[arr.length - 1].posterity = result if (arr.length > 1) { fn(arr) } return arr[0] } console.log(fn(arr))
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //(1)
+      var scope = 'global scope'
+      function checkScope() {
+        var scope = 'local scope'
+        function f() {
+          return scope
+        }
+        return f
+      }
+      var fn = checkScope()
+      var a = fn()
+      console.log(a) // 'local scope'
+
+      //(2)
+      var scope = 'global scope'
+      function checkScope() {
+        var scope = 'local scope'
+        function f(scope) {
+          return scope
+        }
+        return f
+      }
+      var fn = checkScope()
+      var a = fn(123)
+      console.log(a) // error
+
+      //(3)
+      var scope = 'global scope'
+      function checkScope() {
+        var scope = 'local scope'
+        function f() {
+          scope = 233
+          return scope
+        }
+        return f
+      }
+      var fn = checkScope()
+      var a = fn()
+      console.log(a)
+    </script>
+  </body>
+</html>

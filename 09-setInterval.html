@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    var start = new Date;
+    setTimeout(function(){
+        console.log('2');
+    }, 20);
+    setTimeout(function(){
+        console.log('3');
+    }, 30);
+    setTimeout(function(){
+        console.log('another 3');
+    }, 30);
+    setTimeout(function(){
+        console.log('1');
+    }, 10);
+    setTimeout(function(){
+        console.log('200');
+    }, 200);
+    console.log('start while');
+    while (new Date - start < 1000) {};
+    console.log('end while');
+    setTimeout(function(){
+        console.log('only 1');
+    }, 1);
+    setTimeout(function(){
+        console.log('another 1');
+    }, 10);
+    
+  </script>
+</body>
+</html>

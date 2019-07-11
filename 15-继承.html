@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function father() {
+      //   this.name = 'daishankeke'
+      //   this.age = 18
+      // }
+
+      // class son extends father {}
+      // console.log(son)
+      // let sp = new son()
+      // console.log(sp)
+
+      // function father() {
+      //   this.name = 'daishankeke'
+      //   this.age = 18
+      // }
+      // function son() {}
+      // son.prototype = new father()
+      // console.log(son)
+      // let sp = new son()
+      // console.log(sp.name)
+      // function father() {
+      //   this.name = 'daishankeke'
+      //   this.age = 18
+      // }
+      // // let son = father
+      // let son =function(){
+      //   (...father)
+      // }
+      // console.log(son)
+      // console.log(1)
+
+      function father(name, age) {
+        this.name = name
+        this.age = age
+      }
+      function son(name, age) {
+        father.call(this, name, age)
+      }
+      son.prototype = new father()
+      let sp = new son('haha', 18)
+      console.log(sp)
+    </script>
+  </body>
+</html>

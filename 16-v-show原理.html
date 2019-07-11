@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .span {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <span class="span" v-show="isShow">111</span>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <!-- /* 1.此时span是显示还是隐藏？ */ -->
+
+    <!-- <script>
+      data() {
+          return {
+            isShow: false
+          }
+        }
+    </script> -->
+
+    <!-- /* 2.此时span是显示还是隐藏？ */ -->
+    <!-- <span class="span" v-show="isShow">111</span>
+    <script>
+      data() {
+          return {
+            isShow: true
+          }
+        },
+    </script>
+    <style>
+      .span {
+        display: none;
+      }
+    </style> -->
+  </body>
+</html>

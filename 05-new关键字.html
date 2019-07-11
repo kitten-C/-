@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function A() {
+        console.log('A')
+        return 'aaa'
+      }
+      var obj1 = new A()
+      console.log(obj1) // 'A'
+
+      function B() {
+        console.log('B')
+        return { b: 'bbb' }
+      }
+      var obj2 = new B()
+      console.log(obj2) // 'B' {b:"bbb"}
+
+      function C() {
+        console.log('C')
+      }
+      var obj3 = new C() // 'C
+      console.log(obj3)
+
+      function D() {
+        console.log('D')
+        return this
+      }
+      var obj4 = new D()
+      console.log(obj4) // 'D'
+
+      function obj5() {
+        console.log('E')
+      }
+      new obj5() //'E'
+    </script>
+  </body>
+</html>

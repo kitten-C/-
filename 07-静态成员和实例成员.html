@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //复习
+      // 什么是实例成员？
+      //    通过实例对象访问到的属性、方法就是实例成员
+      // 什么是静态成员？
+      //    通过构造函数访问到的属性、方法就是静态成员
+      // 什么是成员？
+      //    成员是属性、方法的统称
+
+      function Person(name) {
+        this.name = name
+      }
+      Person.age = 18
+      Person.run = function() {
+        console.log('run')
+      }
+      Person.prototype.sayHi = function() {
+        console.log('hi')
+      }
+
+      var p = new Person('xf')
+      console.log(p.name)
+      console.log(p.sayHi())
+
+      // 思考：实例对象是否可以访问到构造函数上的成员？
+      console.log(p.age)
+      p.run()
+
+      console.log(Person.age)
+      Person.run()
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //(1)
+      // var name = 'windowsName'
+      // function a() {
+      //   var name = 'Cherry'
+      //   console.log(this.name)
+      //   console.log('inner:' + this)
+      // }
+      // a() //
+      // console.log('outer:' + this)
+      //(2)
+      // var name = 'windowsName'
+      // var a = {
+      //   name: 'Cherry',
+      //   fn: function() {
+      //     console.log(this.name)
+      //   }
+      // }
+      // a.fn() //
+      // //(3)
+      // var name = 'windowsName'
+      // var a = {
+      //   name: 'Cherry',
+      //   fn: function() {
+      //     console.log(this.name)
+      //   }
+      // }
+      // window.a.fn() //
+      // //(4)
+      // var name = 'windowsName'
+      // var a = {
+      //   name: 'Cherry',
+      //   fn: function() {
+      //     console.log(this.name)
+      //   }
+      // }
+      // var f = a.fn
+      // f() //
+      // //(5)
+      // var name = 'windowsName'
+      // function fn() {
+      //   var name = 'Cherry'
+      //   innerFunction()
+      //   function innerFunction() {
+      //     console.log(this.name)
+      //   }
+      // }
+      // fn()
+      // 6
+      function a(xx) {
+        this.x = xx
+        return this
+      }
+      var x = a(5)
+      var y = a(6)
+      console.log(x.x)
+      console.log(y.x)
+    </script>
+  </body>
+</html>

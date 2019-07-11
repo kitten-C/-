@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ msg }}
+      <box1>这是写在模板里的文字</box1>
+      <box2
+        ><div slot="front">这是写在前面的内容</div>
+        <div slot="behind">这是写在后面的内容</div></box2
+      >
+      <box3>
+        <template #getdata="{msg}">
+          {{ msg }}
+        </template>
+      </box3>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      // 1. 插槽可以通过在<slot></slot>来接受放在模板标签内的内容
+      Vue.component('box1', {
+        template: `
+        <div>哈哈 <slot></slot></div>
+        `
+      })
+      // 2. 具名插槽  可以给插槽赋予name，可以指定内容放在模板标签的规定的位置
+      Vue.component('box2', {
+        template: `
+          <div><slot name='front'></slot>这是模板中间本来就有的内容<slot name='behind'></slot></div>
+        `
+      })
+      // 3. 作用域插槽 当我们要组件，并且调用组件内的数据，这时数据是不能被直接获取的
+      // 4. 可以用缩写 v-slot: 用#代替
+      Vue.component('box3', {
+        template: `
+        <div>哈哈 
+        <slot name='getdata' :msg='msg'></slot>
+        </div>        
+        `,
+        data() {
+          return {
+            msg: '这是模板里面的数据'
+          }
+        }
+      })
+      new Vue({
+        el: '#app',
+        data: {
+          msg: '这是一条数据'
+        }
+      })
+    </script>
+  </body>
+</html>

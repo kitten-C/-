@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      // 封装call apply bind
+      Function.prototype.myCall = function(ele) {
+        console.log(1)
+        ele._this = this
+        ele._this()
+        delete ele._this
+      }
+      function fn() {
+        console.log(this)
+      }
+      var arr = [1, 2, 3, 4, 5]
+      fn.myCall(arr)
+      console.log([].join.call(arr, ''))
+
+      // 实现一个柯里化函数
+      //
+      // var arr = [
+      //     { name: "祖宗", type: 1, posterity: null },
+      //     { name: "父亲", type: 3, posterity: null },
+      //     { name: "儿子", type: 4, posterity: null },
+      //     { name: "祖父", type: 2, posterity: null },
+      //     { name: "孙子", type: 5, posterity: null }
+      // ]
+      // 输出一个对象 {name: "祖宗" ，type: 1, posterity: {name: "祖父", type: 2, posterity: name: "父亲", type: 3, posterity:。。。} }
+    </script>
+  </body>
+</html>
