@@ -9,15 +9,33 @@
   <body>
     <script>
       // ...的用法尝试
-      function fn(num) {
-        console.log(...num)
-      }
-      console.log(...[1, 2, 3], [1, 2, 3])
-      var obj = { a: 1, b: 2 }
-      console.log({
-        ...obj,
-        c: 3
-      })
+      // function fn(num) {
+      //   console.log(...num)
+      // }
+      // console.log(...[1, 2, 3], [1, 2, 3])
+      // var obj = { a: 1, b: 2 }
+      // console.log({
+      //   ...obj,
+      //   c: 3
+      // })
+      // Promise.prototype.finally = function(callback) {
+      //   let P = this.constructor
+      //   console.log(P)
+      //   return this.then(
+      //     value => P.resolve(callback()).then(() => value),
+      //     reason =>
+      //       P.resolve(callback()).then(() => {
+      //         throw reason
+      //       })
+      //   )
+      // }
+
+      // const p1 = new Promise(() => {
+      //   setTimeout(() => {
+      //     console.log(1)
+      //   }, 1000)
+      // })
+      // p1.finally(() => {})
     </script>
   </body>
 </html>
